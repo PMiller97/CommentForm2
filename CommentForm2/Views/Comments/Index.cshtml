@@ -1,0 +1,41 @@
+﻿@model IEnumerable<CommentForm2.Comments>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <div class="thumbnail">
+                <div class="caption">
+
+                    <h1>
+                        @Html.DisplayFor(modelItem => item.Procedure.Title)
+                    </h1>
+                    <h2>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </h2>
+                    <p>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </p>
+                    <p>
+                        <span class="label label-default">@Html.DisplayNameFor(model => model.Priority)</span><span>@Html.DisplayFor(modelItem => item.Priority)</span>
+                    </p>
+                           
+                        @Html.ActionLink("Delete", "Delete", new { id = item.CommentID }, new { @class = "btn btn-primary", role = "button" })
+                    
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
